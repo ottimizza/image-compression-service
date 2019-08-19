@@ -22,7 +22,7 @@ import br.com.ottimizza.application.utils.ImageUtilities;
 @Service
 public class ImageCompressorService {
 
-    public Resource compress(MultipartFile image, int size, boolean hq) throws Exception {
+    public Resource compress(MultipartFile image, int size, boolean removeTransparency, boolean higherQuality) throws Exception {
         ImageUtilities imageUtilities = new ImageUtilities();
 
         String filename = StringUtils.cleanPath(image.getOriginalFilename());
@@ -35,7 +35,7 @@ public class ImageCompressorService {
 
         write(imageTemporaryPath, imageInputStream);
 
-        BufferedImage bi = imageUtilities.compress(imageTemporaryFile, size, true, hq);
+        BufferedImage bi = imageUtilities.compress(imageTemporaryFile, size, removeTransparency, higherQuality);
 
         imageUtilities.writeFile(imageTemporaryFile, bi);
 

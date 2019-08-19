@@ -25,9 +25,10 @@ public class ImageCompressorController {
 
     @PostMapping
     public HttpEntity<?> compress(@RequestParam(value = "size", defaultValue = "800") int size,
-            @RequestParam(value = "hq", defaultValue = "true") boolean hq, @RequestParam("file") MultipartFile file,
-            HttpServletRequest request) throws Exception {
-        Resource resource = imageCompressorService.compress(file, size, hq);
+            @RequestParam(value = "remove_transparency", defaultValue = "true") boolean removeTransparency,
+            @RequestParam(value = "higher_quality", defaultValue = "true") boolean higherQuality,
+            @RequestParam("file") MultipartFile file, HttpServletRequest request) throws Exception {
+        Resource resource = imageCompressorService.compress(file, size, removeTransparency, higherQuality);
 
         String contentDisposition = getContentDisposition(resource, "attachment");
         String contentType = getContentType(resource, request);

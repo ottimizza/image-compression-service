@@ -63,20 +63,11 @@ public class ImageUtilities { // @formatter:off
 
     private BufferedImage getScaledInstance(BufferedImage img, int targetWidth, int targetHeight, Object hint,
             boolean higherQuality) {
-        System.out.println("Getting Type...");
         int type = (img.getTransparency() == Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB
                 : BufferedImage.TYPE_INT_ARGB;
-        System.out.println("Copying Image...");
         BufferedImage ret = (BufferedImage) img;
         
-        System.out.println("Initializing w & h...");
         int w, h;
-
-        System.out.println(MessageFormat.format("Target Width {0}", targetWidth));
-        System.out.println(MessageFormat.format("Target Height {0}", targetHeight));
-
-        System.out.println(MessageFormat.format("Image Width {0}", img.getWidth()));
-        System.out.println(MessageFormat.format("Image Height {0}", img.getHeight()));
 
         if (targetWidth > img.getWidth() || targetHeight > img.getHeight() ) {
             System.out.println("Final size is bigger");
@@ -129,12 +120,9 @@ public class ImageUtilities { // @formatter:off
     public BufferedImage compress(BufferedImage image, int size, boolean removeTransparency, boolean higherQuality) { 
         // calcula o width x height final da imagem, baseado no tamanho
         // máximo mantendo aspect ratio.
-        System.out.println("Calculating Final Size...");
         final Dimension dimension = this.calculateFinalSize(image, size);
-        System.out.println("Final Size Calculated...");
 
         // compresses the image. 
-        System.out.println("Scaling Image...");
         BufferedImage compressed = getScaledInstance(
             image, 
             (int) dimension.getWidth(), 
@@ -142,7 +130,6 @@ public class ImageUtilities { // @formatter:off
             RenderingHints.VALUE_INTERPOLATION_BILINEAR, 
             higherQuality
         );
-        System.out.println("Image Scaled...");
 
         // removes image's transparency.
         if (removeTransparency) {

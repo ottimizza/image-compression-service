@@ -68,6 +68,7 @@ public class ImageUtilities { // @formatter:off
         int w, h;
 
         if (img.getWidth() > targetWidth && img.getHeight() > targetHeight) {
+            System.out.println("Final size is bigger");
             return img;
         }
 
@@ -117,9 +118,12 @@ public class ImageUtilities { // @formatter:off
     public BufferedImage compress(BufferedImage image, int size, boolean removeTransparency, boolean higherQuality) { 
         // calcula o width x height final da imagem, baseado no tamanho
         // máximo mantendo aspect ratio.
+        System.out.println("Calculating Final Size...");
         final Dimension dimension = this.calculateFinalSize(image, size);
+        System.out.println("Final Size Calculated...");
 
         // compresses the image. 
+        System.out.println("Scaling Image...");
         BufferedImage compressed = getScaledInstance(
             image, 
             (int) dimension.getWidth(), 
@@ -127,6 +131,7 @@ public class ImageUtilities { // @formatter:off
             RenderingHints.VALUE_INTERPOLATION_BILINEAR, 
             higherQuality
         );
+        System.out.println("Image Scaled...");
 
         // removes image's transparency.
         if (removeTransparency) {

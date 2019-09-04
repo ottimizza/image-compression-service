@@ -35,7 +35,9 @@ public class ImageCompressorService {
 
         write(imageTemporaryPath, imageInputStream);
 
+        System.out.println("Compressing...");
         BufferedImage bi = imageUtilities.compress(imageTemporaryFile, size, removeTransparency, higherQuality);
+        System.out.println("Image Compressed...");
 
         imageUtilities.writeFile(imageTemporaryFile, bi);
 

@@ -63,9 +63,13 @@ public class ImageUtilities { // @formatter:off
 
     private BufferedImage getScaledInstance(BufferedImage img, int targetWidth, int targetHeight, Object hint,
             boolean higherQuality) {
+        System.out.println("Getting Type...");
         int type = (img.getTransparency() == Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB
                 : BufferedImage.TYPE_INT_ARGB;
+        System.out.println("Copying Image...");
         BufferedImage ret = (BufferedImage) img;
+        
+        System.out.println("Initializing w & h...");
         int w, h;
 
         System.out.println(MessageFormat.format("Target Width {0}", targetWidth));

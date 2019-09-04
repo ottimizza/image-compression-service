@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 
 import javax.imageio.ImageIO;
 
@@ -66,6 +67,12 @@ public class ImageUtilities { // @formatter:off
                 : BufferedImage.TYPE_INT_ARGB;
         BufferedImage ret = (BufferedImage) img;
         int w, h;
+
+        System.out.println(MessageFormat.format("Target Width {0}", targetWidth));
+        System.out.println(MessageFormat.format("Target Height {0}", targetHeight));
+
+        System.out.println(MessageFormat.format("Image Width {0}", img.getWidth()));
+        System.out.println(MessageFormat.format("Image Height {0}", img.getHeight()));
 
         if (img.getWidth() > targetWidth && img.getHeight() > targetHeight) {
             System.out.println("Final size is bigger");

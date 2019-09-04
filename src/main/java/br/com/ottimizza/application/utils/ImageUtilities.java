@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 
 import javax.imageio.ImageIO;
 
@@ -65,7 +66,14 @@ public class ImageUtilities { // @formatter:off
         int type = (img.getTransparency() == Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB
                 : BufferedImage.TYPE_INT_ARGB;
         BufferedImage ret = (BufferedImage) img;
+        
         int w, h;
+
+        if (targetWidth > img.getWidth() || targetHeight > img.getHeight() ) {
+            System.out.println("Final size is bigger");
+            return img;
+        }
+
         if (higherQuality) {
             // Use multi-step technique: start with original size, then
             // scale down in multiple passes with drawImage()

@@ -78,7 +78,7 @@ public class ImageUtilities { // @formatter:off
         System.out.println(MessageFormat.format("Image Width {0}", img.getWidth()));
         System.out.println(MessageFormat.format("Image Height {0}", img.getHeight()));
 
-        if (img.getWidth() > targetWidth && img.getHeight() > targetHeight) {
+        if (targetWidth > img.getWidth() || targetHeight > img.getHeight() ) {
             System.out.println("Final size is bigger");
             return img;
         }
